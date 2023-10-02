@@ -1,18 +1,15 @@
-// Define a function to create unique cookies
 function createUniqueCookies() {
-    const cookieName = "myUniqueCookie";
-    const cookieValue = generateUniqueValue(); // You need to implement this function
+  const cookies = [];
 
-    // Set the cookie with a unique value
-    document.cookie = `${cookieName}=${cookieValue}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+  for (let i = 1; i <= 10000; i++) {
+    const cookieName = `cookie_${i}`;
+    const cookieValue = `value_${i}`;
+    document.cookie = `${cookieName}=${cookieValue}; path=/`;
+    cookies.push({ name: cookieName, value: cookieValue });
+  }
 
-    alert(`Cookie created with value: ${cookieValue}`);
+  return cookies;
 }
 
-// Function to generate a unique value (you can customize this)
-function generateUniqueValue() {
-    return Math.random().toString(36).substring(2); // Generates a random string
-}
-
-// Call the createUniqueCookies function when the page loads
-window.onload = createUniqueCookies;
+const generatedCookies = createUniqueCookies();
+console.log(`Generated ${generatedCookies.length} unique cookies.`);
